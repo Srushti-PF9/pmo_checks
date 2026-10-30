@@ -444,7 +444,7 @@ elif [[ $choice -eq 3 ]]; then
       echo -e "  Status       : ${RED}✘ Change detected in Compute service states!${NC}"
       STATUS_NOVA="${RED}DIFF DETECTED${NC}"
       echo -e "${YELLOW}  --- Detailed Diff ---${NC}"
-      diff -u --color=always -L "Pre-Check" <(echo "$PRE_NOVA") -L "Post-Check" <(echo "$POST_NOVA") | sed 's/^/    /'
+      diff -u -b --color=always -L "Pre-Check" <(echo "$PRE_NOVA") -L "Post-Check" <(echo "$POST_NOVA") | sed 's/^/    /'
     fi
     echo ""
 
