@@ -6,11 +6,11 @@ A Bash script that captures the health of a PCD DU (Deployment Unit) before and 
 
 ## Prerequisites
 
-**Local machine (where you run the script)**
+**Local machine**
 - `bash`, `ssh`, `curl`, `jq`, `diff`, `awk`, `sed`
 - SSH access to the DU with **passwordless sudo**
 
-**On the DU (used remotely by the script)**
+**On the DU **
 - `/root/admin_admin.rc` (OpenStack admin credentials)
 - `du_ctl` at `/opt/pf9/du-tools/du-ctl/du_ctl`
 - `mysql` client with access to the `resmgr` DB
@@ -99,7 +99,7 @@ reports/
 | `CHANGED` | Expected change (DU version, hostagent version, cert version) |
 | `DIFF DETECTED` | Unexpected difference – a detailed diff is printed below the section |
 
-Sections 4–9 ignore table padding/whitespace when deciding the status.
+ignore table padding/whitespace when deciding the status.
 
 ---
 
@@ -110,8 +110,7 @@ Sections 4–9 ignore table padding/whitespace when deciding the status.
 - **DOWN service rows include timestamps** (`Updated At`), so a still-DOWN service may show as `DIFF DETECTED`. Check the diff before treating it as a regression.
 - **HAProxy cert detection** only matches single-digit versions (`v1`–`v9`).
 - `StrictHostKeyChecking=no` is used to avoid prompts; use only against known DUs.
-- One caveat: after a migration, a DU may legitimately get a new host key. Then accept-new will block the connection until you remove the old entry with ssh-keygen -R <DU_FQDN>.
-
+- If a DU gets a new host key after migration, remove the old entry with ssh-keygen -R <DU_FQDN>.
 ---
 
 ## Reference
