@@ -110,6 +110,7 @@ Sections 4–9 ignore table padding/whitespace when deciding the status.
 - **DOWN service rows include timestamps** (`Updated At`), so a still-DOWN service may show as `DIFF DETECTED`. Check the diff before treating it as a regression.
 - **HAProxy cert detection** only matches single-digit versions (`v1`–`v9`).
 - `StrictHostKeyChecking=no` is used to avoid prompts; use only against known DUs.
+- One caveat: after a migration, a DU may legitimately get a new host key. Then accept-new will block the connection until you remove the old entry with ssh-keygen -R <DU_FQDN>.
 
 ---
 
