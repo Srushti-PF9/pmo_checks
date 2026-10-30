@@ -421,7 +421,7 @@ elif [[ $choice -eq 3 ]]; then
       echo -e "  Status       : ${RED}✘ Differences found in host status / non-responsive hosts!${NC}"
       STATUS_HOSTS="${RED}DIFF DETECTED${NC}"
       echo -e "${YELLOW}  --- Detailed Diff ---${NC}"
-      diff -u --color=always -L "Pre-Check" <(echo "$PRE_HOSTS") -L "Post-Check" <(echo "$POST_HOSTS") | sed 's/^/    /'
+      diff -u -b --color=always -L "Pre-Check" <(echo "$PRE_HOSTS") -L "Post-Check" <(echo "$POST_HOSTS") | sed 's/^/    /'
     fi
     echo ""
 
@@ -467,7 +467,7 @@ elif [[ $choice -eq 3 ]]; then
       echo -e "  Status       : ${RED}✘ Change detected in Network agent states!${NC}"
       STATUS_NEUTRON="${RED}DIFF DETECTED${NC}"
       echo -e "${YELLOW}  --- Detailed Diff ---${NC}"
-      diff -u --color=always -L "Pre-Check" <(echo "$PRE_NEUTRON") -L "Post-Check" <(echo "$POST_NEUTRON") | sed 's/^/    /'
+      diff -u -b --color=always -L "Pre-Check" <(echo "$PRE_NEUTRON") -L "Post-Check" <(echo "$POST_NEUTRON") | sed 's/^/    /'
     fi
     echo ""
 
@@ -490,7 +490,7 @@ elif [[ $choice -eq 3 ]]; then
       echo -e "  Status       : ${RED}✘ Change detected in Cinder service states!${NC}"
       STATUS_CINDER="${RED}DIFF DETECTED${NC}"
       echo -e "${YELLOW}  --- Detailed Diff ---${NC}"
-      diff -u --color=always -L "Pre-Check" <(echo "$PRE_CINDER") -L "Post-Check" <(echo "$POST_CINDER") | sed 's/^/    /'
+      diff -u -b --color=always -L "Pre-Check" <(echo "$PRE_CINDER") -L "Post-Check" <(echo "$POST_CINDER") | sed 's/^/    /'
     fi
     echo ""
 
@@ -514,7 +514,7 @@ elif [[ $choice -eq 3 ]]; then
       echo -e "  Status       : ${RED}✘ Change detected in Offline instances list!${NC}"
       STATUS_SERVERS="${RED}DIFF DETECTED${NC}"
       echo -e "${YELLOW}  --- Detailed Diff ---${NC}"
-      diff -u --color=always -L "Pre-Check" <(echo "$PRE_SERVERS") -L "Post-Check" <(echo "$POST_SERVERS") | sed 's/^/    /'
+      diff -u -b --color=always -L "Pre-Check" <(echo "$PRE_SERVERS") -L "Post-Check" <(echo "$POST_SERVERS") | sed 's/^/    /'
     fi
     echo ""
 
@@ -539,7 +539,7 @@ elif [[ $choice -eq 3 ]]; then
       echo -e "  Status       : ${RED}✘ Incomplete or changed roles detected!${NC}"
       STATUS_ROLES="${RED}DIFF DETECTED${NC}"
       echo -e "${YELLOW}  --- Detailed Diff ---${NC}"
-      diff -u --color=always -L "Pre-Check" <(echo "$PRE_ROLE") -L "Post-Check" <(echo "$POST_ROLE") | sed 's/^/    /'
+      diff -u -b --color=always -L "Pre-Check" <(echo "$PRE_ROLE") -L "Post-Check" <(echo "$POST_ROLE") | sed 's/^/    /'
     fi
     echo ""
 
